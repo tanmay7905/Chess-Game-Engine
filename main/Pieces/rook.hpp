@@ -1,15 +1,14 @@
-#ifndef PAWN_HPP
-#define PAWN_HPP
+#ifndef ROOK_HPP
+#define ROOK_HPP
 
 #include "piece.hpp"
 
-class Pawn: public Piece {
+class Rook: public Piece {
     public : 
-    Pawn(PieceColor color);
+    Rook(PieceColor color);
     bool isValidMove(int srcRow, int srcCol, int destRow, int destCol, Piece* board[8][8]) override;
+
 };
-
-
 
 
 #endif

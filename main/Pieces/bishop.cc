@@ -1,8 +1,8 @@
 #include "Bishop.hpp"
 
-Bishop::Bishop(PieceColor color): Piece(color,"Pawn"){};
+Bishop::Bishop(PieceColor color): Piece(color,"Bishop"){};
 
-bool Bishop::isValidMove(int srcRow, int srcCol, int destRow, int destCol, const std::vector<std::vector<Piece*>>& board) {
+bool Bishop::isValidMove(int srcRow, int srcCol, int destRow, int destCol, Piece* board[8][8]) {
     if (destRow < 0 || destRow >= 8 || destCol < 0 || destCol >= 8) {
         return false;
     }
@@ -39,7 +39,7 @@ bool Bishop::isValidMove(int srcRow, int srcCol, int destRow, int destCol, const
         row += rowStep;
         col+= colStep;
     }
-        Piece* destPiece = board[destRow][destCol];
+    const Piece* destPiece = board[destRow][destCol];
     if (destPiece == nullptr || destPiece->getColor() != color) {
         return true;
     }

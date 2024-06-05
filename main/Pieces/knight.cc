@@ -1,8 +1,8 @@
 #include "knight.hpp"
 
-Knight::Knight(PieceColor color): Piece(color,"Pawn"){};
+Knight::Knight(PieceColor color): Piece(color,"Knight"){};
 
-bool Knight::isValidMove(int srcRow, int srcCol, int destRow, int destCol, const std::vector<std::vector<Piece*>>& board) {
+bool Knight::isValidMove(int srcRow, int srcCol, int destRow, int destCol, Piece* board[8][8]) {
     if(destRow < 0 || destRow >= 8 || destCol < 0 || destCol >= 8) {
         return false;
     }

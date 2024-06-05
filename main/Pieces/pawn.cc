@@ -2,7 +2,7 @@
 
 Pawn::Pawn(PieceColor color): Piece(color,"Pawn"){};
 
-bool Pawn::isValidMove(int srcRow, int srcCol, int destRow, int destCol) {
+bool Pawn::isValidMove(int srcRow, int srcCol, int destRow, int destCol, Piece* board[8][8]) {
     //To check that move is within the board
     if(destRow < 0 || destRow >= 8 || destCol < 0|| destCol >= 8) {
         return false;
@@ -13,7 +13,7 @@ bool Pawn::isValidMove(int srcRow, int srcCol, int destRow, int destCol) {
 
     if(color == WHITE) {
         //if white pawn moves upwards
-        if(srcRow = 1 && rowDiff == 2 && colDiff = 0) {
+        if(srcRow == 1 && rowDiff == 2 && colDiff == 0) {
             //two step forward movement from the starting position
             return true;
         } else if(rowDiff == 1 && colDiff == 0) {
