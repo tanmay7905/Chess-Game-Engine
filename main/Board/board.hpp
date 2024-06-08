@@ -30,12 +30,21 @@ public:
     Move getLastMove();
     PieceColor getCurrentPlayer();
     Move getLastMove() const;
+    void findKing(PieceColor kingColor, int& kingRow, int& kingCol);
+    PieceColor getCurrentPlayer() const;
+    bool isValidSquare(int row, int col) const;
+
+    Piece *getPiece(int row, int col) const;
+
+    void makeMove(int sourceRow, int sourceCol, int targetRow, int targetCol);
+
+    bool isValidMove(int sourceRow, int sourceCol, int targetRow, int targetCol);
 
 private:
     void placePieces();
     void clearBoard();
-    void findKing(PieceColor kingColor, int& kingRow, int& kingCol);
-    PieceColor oppositeColor(PieceColor color);
+    PieceColor oppositeColor(PieceColor color) const;
+    
     Move lastMove;
     PieceColor currentPlayer;
 };

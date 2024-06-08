@@ -384,3 +384,49 @@ void Board::findKing(PieceColor kingColor, int& kingRow, int& kingCol) {
 PieceColor Board::oppositeColor(PieceColor color) const {
     return (color == WHITE) ? BLACK : WHITE;
 }
+bool Board::isValidSquare(int row, int col) const {
+    return row >= 0 && row < 8 && col >= 0 && col < 8;
+}
+Piece* Board::getPiece(int row, int col) const {
+    return board[row][col];
+}
+
+void Board::makeMove(int sourceRow, int sourceCol, int targetRow, int targetCol) {
+    Piece* sourcePiece = board[sourceRow][sourceCol];
+
+    if (sourcePiece == nullptr) {
+        return;
+    }
+    if (!isValidMove(sourceRow, sourceCol, targetRow, targetCol)) {
+        return;
+    }
+
+    // Make the move
+    board[targetRow][targetCol] = sourcePiece;
+    board[sourceRow][sourceCol] = nullptr;
+
+    currentPlayer = (currentPlayer == WHITE) ? BLACK : WHITE;
+}
+
+bool Board::isValidMove(int sourceRow, int sourceCol, int targetRow, int targetCol) {
+    Piece* sourcePiece = board[sourceRow][sourceCol];
+
+    if (sourcePiece == nullptr) {
+        return false;
+    }
+
+    if (sourcePiece->getColor() != currentPlayer) {
+        return false;
+    }
+
+    if (!sourcePiece->isValidMove(sourceRow, sourceCol, targetRow, targetCol, board)) {
+        return false;
+    }
+
+    Piece* targetPiece = board[targetRow][targetCol];
+    if (targetPiece != nullptr && targetPiece->getColor() == currentPlayer) {
+        return false;
+    }
+
+    return true;
+}
