@@ -68,11 +68,3 @@ A transposition table is used to store and retrieve previously evaluated board p
 
 Contributions to this project are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
 
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
-## Acknowledgments
-
-- The Alpha-Beta Pruning algorithm implementation is based on various online resources and tutorials.
-- The chess rules and move generation logic are inspired by other open-source chess engine implementations.
