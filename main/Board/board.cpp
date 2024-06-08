@@ -3,8 +3,14 @@
 
 
 Board::Board() : lastMove(-1, -1, -1, -1, nullptr), currentPlayer(WHITE) {
+    for (int row = 0; row < 8; ++row) {
+        for (int col = 0; col < 8; ++col) {
+            board[row][col] = nullptr;
+        }
+    }
     resetBoard();
 }
+
 
 Board::~Board() {
     clearBoard();
@@ -70,9 +76,10 @@ void Board::makeMove(const Move& move) {
 
     // Update the current player
     currentPlayer = oppositeColor(currentPlayer);
+    if (capturedPiece != nullptr) {
+        delete capturedPiece;
+    }
 
-    // Delete the captured piece
-    delete capturedPiece;
 }
 
 bool Board::isValidMove(const Move& move) {
@@ -321,15 +328,18 @@ std::string Board::getBoardHash() {
     return fen;
 }
 
-Move Board::getLastMove() const {
+Move Board::getLastMove(){
     return lastMove;
 }
 
-PieceColor Board::getCurrentPlayer() const {
+PieceColor Board::getCurrentPlayer() {
     return currentPlayer;
 }
 
 void Board::placePieces() {
+
+    clearBoard();
+
     // White pieces
     board[0][0] = new Rook(WHITE);
     board[0][1] = new Knight(WHITE);
@@ -362,11 +372,14 @@ void Board::placePieces() {
 void Board::clearBoard() {
     for (int row = 0; row < 8; ++row) {
         for (int col = 0; col < 8; ++col) {
-            delete board[row][col];
+            if (board[row][col] != nullptr) {
+                delete board[row][col];
+            }
             board[row][col] = nullptr;
         }
     }
 }
+
 
 void Board::findKing(PieceColor kingColor, int& kingRow, int& kingCol) {
     for (int row = 0; row < 8; ++row) {
@@ -400,12 +413,18 @@ void Board::makeMove(int sourceRow, int sourceCol, int targetRow, int targetCol)
     if (!isValidMove(sourceRow, sourceCol, targetRow, targetCol)) {
         return;
     }
+    Piece* capturedPiece = board[targetRow][targetCol]; 
 
     // Make the move
     board[targetRow][targetCol] = sourcePiece;
     board[sourceRow][sourceCol] = nullptr;
 
     currentPlayer = (currentPlayer == WHITE) ? BLACK : WHITE;
+    if (capturedPiece != nullptr) {
+        delete capturedPiece;
+    }
+
+
 }
 
 bool Board::isValidMove(int sourceRow, int sourceCol, int targetRow, int targetCol) {
@@ -429,4 +448,16 @@ bool Board::isValidMove(int sourceRow, int sourceCol, int targetRow, int targetC
     }
 
     return true;
+}
+
+int Board::getTotalPieces() const {
+    int count = 0;
+    for (int row = 0; row < 8; ++row) {
+        for (int col = 0; col < 8; ++col) {
+            if (getPiece(row, col)) {
+                ++count;
+            }
+        }
+    }
+    return count;
 }

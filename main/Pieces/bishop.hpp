@@ -4,12 +4,9 @@
 #include "piece.hpp"
 
 class Bishop: public Piece {
-    public : 
+public:
     Bishop(PieceColor color);
     bool isValidMove(int srcRow, int srcCol, int destRow, int destCol, Piece* board[8][8]) override;
 };
 
-
-
-
-#endif
+#endif // BISHOP_HPP

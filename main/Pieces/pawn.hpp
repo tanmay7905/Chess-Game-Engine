@@ -4,12 +4,9 @@
 #include "piece.hpp"
 
 class Pawn: public Piece {
-    public : 
+public:
     Pawn(PieceColor color);
     bool isValidMove(int srcRow, int srcCol, int destRow, int destCol, Piece* board[8][8]) override;
 };
 
-
-
-
-#endif
+#endif // PAWN_HPP

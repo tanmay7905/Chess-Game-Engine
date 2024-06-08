@@ -4,12 +4,9 @@
 #include "piece.hpp"
 
 class Queen: public Piece {
-    public : 
+public:
     Queen(PieceColor color);
     bool isValidMove(int srcRow, int srcCol, int destRow, int destCol, Piece* board[8][8]) override;
 };
 
-
-
-
-#endif
+#endif // QUEEN_HPP

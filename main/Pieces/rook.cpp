@@ -2,7 +2,7 @@
 
 Rook::Rook(PieceColor color): Piece(color,"Rook"){};
 
-bool Rook::isValidMove(int srcRow, int srcCol, int destRow, int destCol, Piece* board[8][8])  {
+bool Rook::isValidMove(int srcRow, int srcCol, int destRow, int destCol, Piece* board[8][8]) {
     //to check if it is in the same row or same col
     if (srcRow != destRow && srcCol != destCol) {
         return false;

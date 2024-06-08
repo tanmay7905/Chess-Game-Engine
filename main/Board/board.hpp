@@ -1,5 +1,5 @@
-#ifndef BOARD_H
-#define BOARD_H
+#ifndef BOARD_HPP
+#define BOARD_HPP
 #include <vector>
 #include <string>
 #include "Pieces/piece.hpp"
@@ -39,6 +39,7 @@ public:
     void makeMove(int sourceRow, int sourceCol, int targetRow, int targetCol);
 
     bool isValidMove(int sourceRow, int sourceCol, int targetRow, int targetCol);
+    int getTotalPieces() const;
 
 private:
     void placePieces();

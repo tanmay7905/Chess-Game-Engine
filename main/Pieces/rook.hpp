@@ -4,11 +4,9 @@
 #include "piece.hpp"
 
 class Rook: public Piece {
-    public : 
+public:
     Rook(PieceColor color);
     bool isValidMove(int srcRow, int srcCol, int destRow, int destCol, Piece* board[8][8]) override;
-
 };
 
-
-#endif
+#endif // ROOK_HPP

@@ -1,8 +1,10 @@
-#ifndef GAME_H
-#define GAME_H
+#ifndef GAME_HPP
+#define GAME_HPP
 
 #include "Board/board.hpp"
 #include "GameTree/gametree.hpp"
+#include "Board/move.hpp"
+
 
 class Game {
 private:

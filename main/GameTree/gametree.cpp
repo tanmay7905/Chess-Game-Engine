@@ -1,4 +1,4 @@
-#include <gametree.hpp>
+#include "gametree.hpp"
 
 GameTree::GameTree(const Board& initialBoard) {
     root = new Node{initialBoard, {}};
@@ -66,7 +66,7 @@ void GameTree::expandNode(Node* node, int depth) {
         return;
     }
 
-    std::vector<Move> legalMoves = node->board.generateLegalMoves();
+    std::vector<Move> legalMoves = node->board.generateLegalMoves(node->board.getCurrentPlayer());
     for (const Move& move : legalMoves) {
         Board newBoard = node->board;
         newBoard.makeMove(move);

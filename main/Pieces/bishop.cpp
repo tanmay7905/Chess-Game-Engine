@@ -1,4 +1,4 @@
-#include "Bishop.hpp"
+#include "bishop.hpp"
 
 Bishop::Bishop(PieceColor color): Piece(color,"Bishop"){};
 

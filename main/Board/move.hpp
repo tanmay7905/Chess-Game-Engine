@@ -14,7 +14,7 @@ private:
 
 public:
     Move(int srcRow, int srcCol, int destRow, int destCol, Piece* movedPiece, Piece* capturedPiece = nullptr);
-    Move() =default;
+    Move();
     int getSourceRow() const;
     int getSourceColumn() const;
     int getDestinationRow() const;

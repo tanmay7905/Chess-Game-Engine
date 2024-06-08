@@ -4,6 +4,14 @@ Move::Move(int srcRow, int srcCol, int destRow, int destCol, Piece* movedPiece, 
     : srcRow(srcRow), srcCol(srcCol), destRow(destRow), destCol(destCol),
       movedPiece(movedPiece), capturedPiece(capturedPiece) {}
 
+Move::Move() {
+    srcRow = 0;
+    srcCol = 0;
+    destRow = 0;
+    destCol = 0;
+    movedPiece = nullptr;
+    capturedPiece = nullptr;
+}
 int Move::getSourceRow() const {
     return srcRow;
 }

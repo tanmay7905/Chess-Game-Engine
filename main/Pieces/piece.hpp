@@ -16,9 +16,9 @@ class Piece {
         PieceColor getColor() const;
         std::string getName() const;
 
-        virtual bool isValidMove(int srcRow, int srcCol, int destRow, int destCol, Piece* board[8][8]);
+        virtual bool isValidMove(int srcRow, int srcCol, int destRow, int destCol, Piece* board[8][8]) = 0;
 };
 
 
 
-#endif PIECE_H
+#endif
